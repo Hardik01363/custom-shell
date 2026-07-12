@@ -1,7 +1,19 @@
 #include <stdio.h>
 
 void shell_loop(char** env) {
+    char* input = NULL;
+    size_t input_size = 0;
+    char** args;
 
+    while(true) {
+        printf("[hrk-shell]>> ");
+
+        if(getline(&input, &input_size, stdin) == -1) {
+            //EOF or Ctrl+D
+            perror("getline() interrupted or EOF");
+            break;
+        }
+    }
 }
 
 int main(int argc, char** argv, char** env) {
