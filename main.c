@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "hrk_shell.h"
 
 void shell_loop(char** env) {
     char* input = NULL;
@@ -13,6 +13,7 @@ void shell_loop(char** env) {
             perror("getline() interrupted or EOF");
             break;
         }
+        args = parse(input);
     }
 }
 
