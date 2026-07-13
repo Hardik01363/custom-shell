@@ -13,8 +13,14 @@ char** parse(char* input) {
     }
     
     for(size_t i = 0; input[i]; i++) {
+        //Skipping whitespace characters (Caused a very confusing segfault in shell_builtins())
+        while(input[i] == ' ' || input[i] == '\n' || input[i] == '\t' || input[i] == '\r' || input[i] == '\a') {i++;}
+
+        //Checking if EOF has been reached
+        if(input[i] == '\0') {break;}
+
         token = &input[i];
-        while(input[i] && input[i] != ' ') {
+        while(input[i] != '\0' && input[i] != ' ' && input[i] != '\n' && input[i] != '\t' && input[i] != '\r' && input[i] != '\a') {
             token_length++;
             i++;
         }
