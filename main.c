@@ -14,6 +14,11 @@ void shell_loop(char** env) {
             break;
         }
         args = parse(input);
+        //below for loop is for testing purposes only
+        for(size_t i = 0; args[i]; i++) {
+            printf("Args: %s", args[i]);
+            printf("\n");
+        }
     }
 }
 
