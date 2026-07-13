@@ -37,3 +37,12 @@ char** parse(char* input) {
     tokens[token_number] = NULL; //NULL terminating the array of tokens
     return tokens;
 }
+
+void free_tokens_memory(char** tokens) {
+    if(tokens) return; //Note to self: testing remaining for !tokens (be sure to check once)
+
+    for(size_t i = 0; tokens[i]; i++) {
+        free(tokens[i]); //freeing every token indivisually
+    }
+    free(tokens); //freeing the tokens array
+}
