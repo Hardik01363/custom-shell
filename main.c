@@ -1,12 +1,12 @@
 #include "hrk_shell.h"
 
 int shell_builtins(char** args, char** env, char* init_dir) {
-    if(strcmp(args[0], "pwd")) { return cmd_pwd();}
-    else if(strcmp(args[0], "cd")) {return cmd_cd(args, init_dir);}
-    else if(strcmp(args[0], "which")) {return cmd_which(args, env);}
-    else if(strcmp(args[0], "echo")) {return cmd_echo(args, env);}
-    else if(strcmp(args[0], "env")) {return cmd_env(env);}
-    else if(strcmp(args[0], "exit") || strcmp(args[0], "quit") || strcmp(args[0], "q")) {exit(EXIT_SUCCESS);}
+    if(!my_strcmp(args[0], "pwd")) {return cmd_pwd();}
+    else if(!my_strcmp(args[0], "cd")) {return cmd_cd(args, init_dir);}
+    else if(!my_strcmp(args[0], "which")) {return cmd_which(args, env);}
+    else if(!my_strcmp(args[0], "echo")) {return cmd_echo(args, env);}
+    else if(!my_strcmp(args[0], "env")) {return cmd_env(env);}
+    else if(!my_strcmp(args[0], "exit") || !my_strcmp(args[0], "quit") || !my_strcmp(args[0], "q")) {exit(EXIT_SUCCESS);}
     else {//not a built-in command
 
     }

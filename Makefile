@@ -1,5 +1,5 @@
 TARGET = hrk_shell
-OBJ = main.c parser.c
+OBJ = main.c parser.c helper_functions.c
 CC = gcc
 
 all:
