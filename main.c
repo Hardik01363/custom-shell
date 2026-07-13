@@ -20,14 +20,14 @@ void shell_loop(char** env) {
         }
         args = parse(input);
         //below for loop is for testing purposes only
-        for(size_t i = 0; args[i]; i++) {
-            printf("Args: %s", args[i]);
-            printf("\n");
-        }
+        //for(size_t i = 0; args[i]; i++) {
+        //    printf("Args: %s", args[i]);
+        //    printf("\n");
+        //}
         
-//        if(args[0] == NULL) {
-//            shell_builts(args, env, init_dir);
-//        }
+        if(!args[0]) { //Note to self: Check if args[0] would work
+            shell_builts(args, env, init_dir);
+        }
     }
     free_tokens_memory(args);
 }
