@@ -1,7 +1,14 @@
 #include "hrk_shell.h"
 
 int cmd_pwd() {
-
+   char cwd[MAX_PATH_LENGTH];
+   if(getcwd(cwd, sizeof(cwd)) != NULL) {
+    printf("%s\n", cwd);
+   }
+   else {
+        perror("pwd: getcwd failed");
+   }
+   return 0;
 }
 
 int cmd_cd(char** args, char* init_dir) {
