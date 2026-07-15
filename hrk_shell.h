@@ -9,6 +9,9 @@ char** parse(char* input);
 void free_tokens_memory(char** tokens);
 int shell_builtins(char** args, char** env, char* init_dir);
 int my_strcmp(const char* str1, const char* str2);
+size_t my_strlen(const char* str);
+int my_strncmp(const char* str1, const char* str2, size_t n);
+char* my_getenv(const char* name, char** env);
 
 int cmd_pwd();
 int cmd_cd(char** args, char* init_dir);

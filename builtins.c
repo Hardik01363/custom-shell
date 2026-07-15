@@ -15,7 +15,7 @@ int cmd_pwd() {
 
 int cmd_cd(char** args, char* init_dir) {
     if(args[1] == NULL) {
-        printf("cd: expected argument - cd [path-to-dir/file]\ \n");
+        printf("cd: expected argument - cd [path-to-dir/file]\n");
     }
     else if(args[1] == 0) {
         printf("cd: cd completed as intended\n");
@@ -41,9 +41,9 @@ int cmd_echo(char** args, char** env) {
 
     for(; args[i]; i++) {
         if(args[i][0] == '$') {
-            char* env_value = my_getenv(args[i]+1);
+            char* env_value = my_getenv(args[i] + 1, env);
             if(env_value) {printf("%s", env_value);}
-            else {printf("");}
+            else {printf(" ");} //dont know why printf("") is needed, but, code doesnt work without it! :)
         }
         else {printf("%s", args[i]);}
 
