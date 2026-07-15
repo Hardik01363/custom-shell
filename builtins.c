@@ -27,7 +27,9 @@ int cmd_cd(char** args, char* init_dir) {
 }
 
 int cmd_env(char** env) {
-
+    size_t i = 0;
+    while(env[i]) {printf("%s\n", env[i]); i++;}
+    return 0;
 }
 
 int cmd_which(char** args, char** env) {
