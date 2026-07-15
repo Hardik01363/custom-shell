@@ -5,7 +5,16 @@ int cmd_pwd() {
 }
 
 int cmd_cd(char** args, char* init_dir) {
-
+    if(args[1] == NULL) {
+        printf("cd: expected argument - cd [path-to-dir/file]\ \n");
+    }
+    else if(args[1] == 0) {
+        printf("cd: cd completed as intended\n");
+    }
+    else{
+        perror("CD");
+    }
+    return 0;
 }
 
 int cmd_env(char** env) {
