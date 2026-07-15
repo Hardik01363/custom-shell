@@ -12,6 +12,7 @@ int my_strcmp(const char* str1, const char* str2);
 size_t my_strlen(const char* str);
 int my_strncmp(const char* str1, const char* str2, size_t n);
 char* my_getenv(const char* name, char** env);
+char* find_cmd_in_path(const char* cmd, char** env);
 
 int cmd_pwd();
 int cmd_cd(char** args, char* init_dir);

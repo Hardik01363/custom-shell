@@ -33,7 +33,20 @@ int cmd_env(char** env) {
 }
 
 int cmd_which(char** args, char** env) {
-
+    if(args[1] == NULL) {
+        printf("which: expected argument\n");
+        return 1;
+    }
+    //list of builtin commands available to search with which command
+    const char* builtin_cmds[] = {"pwd", "cd", "env", "setenv", "unsetenv", "which", "echo", "exit"};
+    for(size_t i = 0; builtin_cmds[i]; i++) {
+        if(my_strcmp(builtin_cmds[i], args[1]) == 0) {
+            printf("%s: shell built-in command\n", args[1]);
+            return 0;
+        }
+    }
+    //checking external commands
+    char* cmd_path = find_cmd_in_path(args[1], env);
 }
 
 int cmd_echo(char** args, char** env) {

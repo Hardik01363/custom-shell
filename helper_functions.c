@@ -37,3 +37,12 @@ char* my_getenv(const char* name, char** env) {
     }
     return NULL;
 }
+
+//Searches forr cammand in PATH field in env list
+char* find_cmd_in_path(const char* cmd, char** env) {
+    char* path_env = NULL; //stores the PATH value
+    char* path = NULL; //duplicate of path_env (we will modify and use this and not path_env as we dont want to change env variables)
+    char* token = NULL; //tokenized dirs from the PATH field in env
+    char full_path[1024]; //buffer to construct full paths (max size 1024 alloted)
+
+}
