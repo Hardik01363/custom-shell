@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stddef.h>
+#include <stdbool.h>
 #define MAX_INPUT 1024
 
 char** parse(char* input);

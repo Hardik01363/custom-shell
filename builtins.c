@@ -35,5 +35,20 @@ int cmd_which(char** args, char** env) {
 }
 
 int cmd_echo(char** args, char** env) {
+    bool new_line = true; //default echo wnds with\n, but, not if -n passed as a flag
+    size_t i = 1;  //index of arg to read (used only to skip -n flag if inserted)
+    if(args[1] != NULL && my_strcmp(args[1], "-n") == 0) {new_line = false;  i++;}
 
+    for(; args[i]; i++) {
+        if(args[i][0] == '$') {
+            char* env_value = my_getenv(args[i]+1);
+            if(env_value) {printf("%s", env_value);}
+            else {printf("");}
+        }
+        else {printf("%s", args[i]);}
+
+        if(args[i+1] != NULL) {printf(" ");}
+    }
+    if(new_line) {printf("\n");}
+    return 0;
 }
