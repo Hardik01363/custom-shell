@@ -1,14 +1,16 @@
 #include "hrk_shell.h"
 
 int cmd_pwd() {
-   char cwd[MAX_PATH_LENGTH];
-   if(getcwd(cwd, sizeof(cwd)) != NULL) {
-    printf("%s\n", cwd);
-   }
-   else {
+    char* cwd = NULL;
+    cwd = getcwd(NULL, 0); //Memory allocated dynamically (will free later)
+    if(cwd != NULL) {
+        printf("%s\n", cwd);
+        free(cwd);
+    }
+    else {
         perror("pwd: getcwd failed");
-   }
-   return 0;
+    }
+    return 0;
 }
 
 int cmd_cd(char** args, char* init_dir) {

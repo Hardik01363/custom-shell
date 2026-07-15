@@ -3,7 +3,6 @@
 #include <unistd.h>
 #include <stddef.h>
 #define MAX_INPUT 1024
-#defined MAX_PATH_LENGTH 256
 
 char** parse(char* input);
 void free_tokens_memory(char** tokens);
