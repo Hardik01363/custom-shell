@@ -38,7 +38,7 @@ int cmd_which(char** args, char** env) {
         return 1;
     }
     //list of builtin commands available to search with which command
-    const char* builtin_cmds[] = {"pwd", "cd", "env", "setenv", "unsetenv", "which", "echo", "exit"};
+    const char* builtin_cmds[] = {"pwd", "cd", "env", "setenv", "unsetenv", "which", "echo", "exit", NULL};
     for(size_t i = 0; builtin_cmds[i]; i++) {
         if(my_strcmp(builtin_cmds[i], args[1]) == 0) {
             printf("%s: shell built-in command\n", args[1]);

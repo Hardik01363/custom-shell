@@ -58,6 +58,10 @@ char* my_strdup(const char* str) {
     return dup;
 }
 
+char* my_strtok(char* str, const char* pivot) { //pivot will be the char we use to distinguish start and end of individual tokens
+    
+}
+
 //Searches forr cammand in PATH field in env list
 char* find_cmd_in_path(const char* cmd, char** env) {
     char* path_env = NULL; //stores the PATH value
@@ -65,11 +69,21 @@ char* find_cmd_in_path(const char* cmd, char** env) {
     char* token = NULL; //tokenized dirs from the PATH field in env
     char full_path[1024]; //buffer to construct full paths (max size 1024 alloted)
     
-    path_env = my_getenv(cmd, env);
+    for(size_t i = 0; env[i]; i++) {
+        if(my_strncmp(env[i], "PATH=", 5) == 0) {
+            path_env = env[i] + 5; //+5 is to skip PATH= in the env[i] line
+            break;
+        }
+    }
     if(path_env == NULL) {return NULL;}
 
     path = my_strdup(path_env);
-    
+    if(path == NULL) {
+        perror("my_strdup - error duplicating path_env into path");
+        return NULL;
+    }
+    //using the fact that individual dirs are separated by ':'
+    token = my_strtok(path, ":");
 
 
     free(path);
