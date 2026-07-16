@@ -58,8 +58,34 @@ char* my_strdup(const char* str) {
     return dup;
 }
 
+char* my_strchr(const char* str, char c) {
+    while(*str) {
+        if(*str == c) {return (char*)str;}
+        str++;
+    }
+    return NULL;
+}
+
 char* my_strtok(char* str, const char* pivot) { //pivot will be the char we use to distinguish start and end of individual tokens
-    
+    static char* next_token = NULL;
+    if(str == NULL) {str = next_token;}
+    if(str == NULL) {return NULL;}
+
+    while(*str && my_strchr(pivot, *str)) {str++;}
+    if(*str == '\0') {
+        next_token = NULL;
+        return NULL;
+    }
+
+    char* token = str;
+    while(*str && !my_strchr(pivot, *str)) {str++;}
+    if(*str) {
+        *str = '\0';
+        next_token = str + 1;
+    }
+    else {next_token = NULL;}
+
+    return token;
 }
 
 //Searches forr cammand in PATH field in env list
