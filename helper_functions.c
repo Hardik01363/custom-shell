@@ -110,7 +110,22 @@ char* find_cmd_in_path(const char* cmd, char** env) {
     }
     //using the fact that individual dirs are separated by ':'
     token = my_strtok(path, ":");
+    while(token != NULL) {
+        size_t len = my_strlen(token);
+        if(token[len-1] != '/') {
+            snprintf(full_path, sizeof(full_path), "%s%s%s", token, "/", cmd);
+        }
+        else {
+            snprintf(full_path, sizeof(full_path), "%s%s", token, cmd);
+        }
 
+        if(access(full_path, X_OK) == 0) {
+            free(path);
+            return my_strdup(full_path);
+        }
+
+        token = my_strtok(NULL, ":"); //moving to next dir
+    }
 
     free(path);
     return NULL;

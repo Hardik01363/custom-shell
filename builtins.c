@@ -14,6 +14,7 @@ int cmd_pwd() {
 }
 
 int cmd_cd(char** args, char* init_dir) {
+    (void)init_dir;
     if(args[1] == NULL) {
         printf("cd: expected argument - cd [path-to-dir/file]\n");
     }
@@ -46,7 +47,16 @@ int cmd_which(char** args, char** env) {
         }
     }
     //checking external commands
-    char* cmd_path = find_cmd_in_path(args[1], env);
+    char* full_path = find_cmd_in_path(args[1], env);
+    if(full_path != NULL) {
+        printf("%s\n", full_path);
+        free(full_path);
+        return 0;
+    }
+    else {
+        printf("which - %s command not found in env", args[1]);
+        return 1;
+    }
 }
 
 int cmd_echo(char** args, char** env) {
