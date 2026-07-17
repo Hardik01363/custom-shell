@@ -9,7 +9,7 @@ char** parse(char* input) {
 
     if(!tokens) {
         perror("parser - Malloc() failed while allocating to tokens array!");
-        exit(EXIT_FAILURE);
+        exit(1);
     }
     
     for(size_t i = 0; input[i]; i++) {
@@ -28,7 +28,7 @@ char** parse(char* input) {
         tokens[token_number] = malloc((token_length + 1) * sizeof(char));
         if(!tokens[token_number]) {
         perror("parser - Malloc() failed while allocating to a token");
-        exit(EXIT_FAILURE);
+        exit(1);
         }
         
         //using for loop instead of strcpy() or memcpy() to avoid segfaults (C is scary)

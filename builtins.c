@@ -129,7 +129,7 @@ char** cmd_setenv(char** args, char** env) {
     return new_env;
 }
 
-char** command_unsetenv(char** args, char** env){
+char** cmd_unsetenv(char** args, char** env){
     if (!args[1]) {
         printf("usage cmd - unsetenv <variable>\n");
         return env;

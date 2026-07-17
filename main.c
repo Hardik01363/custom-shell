@@ -8,7 +8,7 @@ int shell_builtins(char** args, char** env, char* init_dir) {
     else if(my_strcmp(args[0], "env") == 0) {return cmd_env(env);}
     else if(my_strcmp(args[0], "exit") == 0 || my_strcmp(args[0], "quit") == 0 || my_strcmp(args[0], "q") == 0) {exit(EXIT_SUCCESS);}
     else {//not a built-in command
-        //executor();        
+        return executor(args, env);     
     }
     return 0; //only temporary till else statement is left empty
 }
@@ -46,6 +46,7 @@ void shell_loop(char** env) {
         }
     }
     free_tokens_memory(args);
+    free(env);
 }
 
 int main(int argc, char** argv, char** env) {

@@ -1,5 +1,5 @@
 TARGET = hrk_shell
-OBJ = main.c parser.c helper_functions.c builtins.c
+OBJ = main.c parser.c helper_functions.c builtins.c executor.c
 CFLAGS = -Wall -Wextra -Werror
 CC = gcc
 
