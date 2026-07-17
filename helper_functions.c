@@ -130,3 +130,9 @@ char* find_cmd_in_path(const char* cmd, char** env) {
     free(path);
     return NULL;
 }
+
+int count_env_vars(char** env) {
+    int cnt = 0;
+    while(env[cnt]) {cnt++;}
+    return cnt;
+}

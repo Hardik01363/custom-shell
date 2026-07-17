@@ -33,8 +33,15 @@ void shell_loop(char** env) {
         //    printf("Args: %s", args[i]);
         //    printf("\n");
         //}
-        
-        if(args[0]) {
+
+        if(!args[0]) {return;}
+        else if(my_strcmp(args[0], "setenv") == 0) {
+            env = cmd_setenv(args, env);
+        }
+        else if(my_strcmp(args[0], "unsetenv") == 0) {
+            env = cmd_unsetenv(args, env);
+        }
+        else {
             shell_builtins(args, env, init_dir);
         }
     }
